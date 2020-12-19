@@ -9,7 +9,7 @@ int main()
 		if (IQ >= 140)
 		{
 			printf("Genius\n");
-		}
-	}
+		} 
+	}  
 	return 0;
 }
