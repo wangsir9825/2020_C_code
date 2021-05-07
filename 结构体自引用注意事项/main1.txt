@@ -1,0 +1,19 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+#include <stdio.h>
+//错误代码示例
+	//struct Node
+	//{
+	//	int data;
+	//	struct Node next; //结构体不能自引用
+	//};
+//利用指针进行自引用
+struct Node
+{
+	int data;
+	struct Node* next; //利用结构体指针自引用
+};
+int main()
+{
+	printf("%d", sizeof(struct Node));
+	return 0;
+}
