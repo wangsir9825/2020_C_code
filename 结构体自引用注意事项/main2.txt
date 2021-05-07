@@ -1,0 +1,19 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+#include <stdio.h>
+//错误示例
+	//typedef struct
+	//{
+	//	int data;
+	//	Node* next; //结构体内部不能使用重新定义的结构体名字
+	//}Node;
+//正确示例
+typedef struct
+{
+	int data;
+	struct Node* next; //结构体内部不能使用重新定义的结构体名字
+}Node;
+int main()
+{
+	printf("结构体的大小为：%d", sizeof(Node));
+	return 0;
+}
