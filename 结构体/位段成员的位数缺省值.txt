@@ -1,0 +1,14 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+#include <stdio.h>
+struct _Record_Struct
+{
+	unsigned char Env_Alarm_ID : 4;//表示位域，表示占了一个字节的四位
+	unsigned char Paral : 2;
+	unsigned char state; //位段成员后边如果没有数字，则该成员的位数和其类型的大小相等，因为unsigned char占八位，故state的大小为8个比特位
+	unsigned char avail : 1;
+}*Env_Alarm_Record;
+int main()
+{
+	printf("%d", sizeof(struct _Record_Struct));
+	return 0;
+}
