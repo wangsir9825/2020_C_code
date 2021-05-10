@@ -1,0 +1,11 @@
+#include <stdio.h>
+union Un
+{
+	short s[7];
+	int n;
+};
+int main()
+{
+	printf("%d\n", sizeof(union Un)); //输出为16
+	return 0;
+}
