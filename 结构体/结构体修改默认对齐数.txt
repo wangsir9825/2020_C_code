@@ -1,0 +1,31 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+#include <stdio.h>
+#include <stddef.h>
+//visual studio 2019的默认对齐数为8
+struct s1
+{
+	char c1;
+	double d;
+	int i;
+};
+
+#pragma pack(4)//设置默认对齐数为4
+struct s2
+{
+	char c1;
+	double d;
+	int i;
+};
+#pragma pack(4)//取消设置对齐数，对齐数被还原为默认值
+int main()
+{
+	printf("s1成员c1偏移量：%d\n", offsetof(struct s1, c1));
+	printf("s1成员c2偏移量：%d\n", offsetof(struct s1, d));
+	printf("s1成员i偏移量：%d\n", offsetof(struct s1, i));
+	printf("s1结构体的大小为：%d\n", sizeof(struct s1));
+	printf("s2成员c1偏移量：%d\n", offsetof(struct s2, c1));
+	printf("s2成员c2偏移量：%d\n", offsetof(struct s2, d));
+	printf("s2成员i偏移量：%d\n", offsetof(struct s2, i));
+	printf("s2结构体的大小为：%d\n", sizeof(struct s2));
+	return 0;
+}
