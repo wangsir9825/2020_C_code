@@ -1,0 +1,28 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+#include <stdio.h>
+#include <stddef.h>
+struct s1
+{
+	char c1;
+	int i;
+	char c2;
+};
+struct s2
+{
+	char c1;
+	char c2;
+	int i;
+};
+
+int main()
+{
+	printf("s1成员c1偏移量：%d\n", offsetof(struct s1,c1));
+	printf("s1成员i偏移量：%d\n", offsetof(struct s1, i));
+	printf("s1成员c2偏移量：%d\n", offsetof(struct s1, c2));
+	printf("s1结构体的大小为：%d\n", sizeof(struct s1));
+	printf("s2成员c1偏移量：%d\n", offsetof(struct s2, c1));
+	printf("s2成员c2偏移量：%d\n", offsetof(struct s2, c2));
+	printf("s2成员i偏移量：%d\n", offsetof(struct s2, i));
+	printf("s2结构体的大小为：%d\n", sizeof(struct s2));
+	return 0;
+}
