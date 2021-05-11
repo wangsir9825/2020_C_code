@@ -1,0 +1,14 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+#include <stdio.h>
+struct Point
+{
+	int x;
+	int y;
+}p1 = { 1,2 }; //声明类型的同时定义变量p1
+struct Point p2 = { 3, 4 };//初始化：定义结构体变量p2的同时赋初值。
+int main()
+{
+	printf("结构体p1:x = %d,y = %d\n", p1.x, p1.y);
+	printf("结构体p2:x = %d,y = %d\n", p2.x, p2.y);
+	return 0;
+}
