@@ -1,0 +1,23 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+#include <stdio.h>
+#include <stddef.h>
+struct S3
+{
+	double d;
+	char c;
+	int i;
+};
+struct S4
+{
+	char c1;
+	struct S3 s3;
+	double d;
+};
+int main()
+{
+	printf("S4成员c1偏移量：%d\n", offsetof(struct S4, c1));
+	printf("S4成员s3偏移量：%d\n", offsetof(struct S4, s3));
+	printf("S4成员d偏移量：%d\n", offsetof(struct S4, d));
+	printf("S4结构体的大小为：%d\n", sizeof(struct S4));
+	return 0;
+}
