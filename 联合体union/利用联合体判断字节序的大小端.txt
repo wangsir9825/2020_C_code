@@ -1,0 +1,33 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+#include <stdio.h>
+// 
+int check_sys()
+{
+	//返回1-小端
+	//返回0-大端
+	union //匿名联合体
+	{
+		char c;
+		int i;
+	}u;
+	u.i = 1;
+	return u.c;
+}
+int main()
+{
+	//大小端（字节序）
+	//int 啊= 0x11223344;
+	//低地址			高地址
+	//44 33 22 11 -小端
+	//11 22 33 44 -大端
+	int ret = check_sys();
+	if (1 == ret)
+	{
+		printf("小端\n");
+	}
+	else
+	{
+		printf("大端\n");
+	}
+	return 0;
+}
