@@ -1,0 +1,14 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+#include <stdio.h>
+int main()
+{
+	FILE* pFile;
+	pFile = fopen("myfile.txt", "w"); //以只写的方式打开文件
+	if (pFile != NULL)
+	{
+		fputs("fopen example", pFile); //向文本文件中写入字符型数据
+		fclose(pFile);
+	}
+	pFile = NULL; //将指针置为空，防止产生野指针
+	return 0;
+}
