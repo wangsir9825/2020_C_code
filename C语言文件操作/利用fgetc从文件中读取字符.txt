@@ -1,0 +1,21 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+#include <stdio.h>
+
+int main()
+{
+	FILE* pFile;
+	pFile = fopen("myfile.txt", "r"); //以只读的方式打开文件，文件必须存在才能打开成功
+	if (pFile == NULL)//如果打开失败
+	{
+		perror("fopen");
+		return 1;
+	}
+	int ch = 0; //fgetc返回的是ASCII码，故可以用整数变量接收，另外用int型，还考虑了接收EOF
+	while ((ch = fgetc(pFile)) != EOF)//从文本文件中读字符
+	{
+		printf("%c ", ch);
+	}
+	fclose(pFile);
+	pFile = NULL; //将指针置为空，防止产生野指针
+	return 0;
+}
