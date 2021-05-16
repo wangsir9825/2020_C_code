@@ -8,7 +8,7 @@ int main()
 	{
 		fputs("fopen example", pFile); //向文本文件中写入字符型数据
 		fclose(pFile);
+		pFile = NULL; //将指针置为空，防止产生野指针
 	}
-	pFile = NULL; //将指针置为空，防止产生野指针
 	return 0;
 }
