@@ -1,0 +1,34 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+#include <stdio.h>
+#include <stdlib.h>
+int main()
+{
+	int* p = (int*)malloc(40);
+	if (p == NULL)
+	{
+		perror("malloc");
+		return -1;
+	}
+	int i = 0;
+	for (i = 0; i < 10; i++)
+	{
+		*(p + i) = i;
+	}
+	//扩容，调整内存
+	int* ptr = (int*)realloc(p, 80);//用一个新变量接收，防止申请失败
+	if (ptr != NULL)
+	{
+		p = ptr;
+	}
+	for (i = 10; i < 20; i++)
+	{
+		*(p + i) = i;
+	}
+	for (i = 0; i < 20; i++)
+	{
+		printf("%d ", *(p + i));
+	}
+	free(p);
+	p = NULL;
+	return 0;
+}
