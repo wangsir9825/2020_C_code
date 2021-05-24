@@ -1,0 +1,9 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+#include <stdio.h>
+
+int main()
+{
+	int ch = fgetc(stdin);// 利用fgetc从标准输入流读取一个字符
+	printf("\n%c\n", ch);//将读入的字符打印到屏幕
+	return 0;
+}
