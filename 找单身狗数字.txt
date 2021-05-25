@@ -1,0 +1,33 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+#include <stdio.h>
+int find_signaldog(int arr[], int n)
+{
+    int i;
+    for (i = 0; i < n - 1; i++)
+    {
+        int j;
+        for (j = i + 1; j < n; ++j)
+        {
+            if (arr[i] == arr[j])
+                break;
+            else if (j == n - 1)
+                return i; //找到了，返回下标
+        }
+    }
+    return -1; //没找到，返回-1
+}
+int main()
+{
+
+    int arr[] = { 1, 2, 3, 5, 6, 7, 7, 6, 1, 2, 3 };
+    int n = sizeof(arr) / sizeof(int);
+    int num = find_signaldog(arr,n);
+    if (num == -1)
+    {
+        printf("没找到\n");
+    }
+    else {
+        printf("找到了：%d", arr[num]);
+    }
+    return 0;
+}
