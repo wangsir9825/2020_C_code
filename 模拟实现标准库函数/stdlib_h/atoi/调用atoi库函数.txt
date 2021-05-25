@@ -1,0 +1,8 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+#include <stdio.h>
+#include <stdlib.h> // atoi
+int main()
+{
+	printf("%d", atoi("    12 34"));
+	return 0;
+}
