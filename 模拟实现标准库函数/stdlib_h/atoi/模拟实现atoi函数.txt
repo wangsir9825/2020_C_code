@@ -1,0 +1,98 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+#include <stdio.h>
+#include <assert.h>
+#include <stdlib.h>
+#include <ctype.h> //isspace
+int flag = 0;
+long long my_atoi(const char* str) {
+
+    int vaild = 0;
+    int invaild = 1;
+    long long ret = 0;
+    int symbol = 1;
+    //断言str!=NULL
+    assert(str);
+    //判断空字符
+    if ('\0' == *str) {
+        flag = invaild;
+        return 0;
+    }
+    //去掉空格、制表符
+    while (isspace(*str)) {
+        str++;
+    }
+    //符号位判断
+    if ('-' == *str) {
+        symbol = -1;
+        str++;
+}
+    else if ('+' == *str) {
+        str++;
+    }
+    else if (((*str <= '0') || (*str >= '9'))) {
+        flag = invaild;
+        return 0;
+    }
+    //其他异常情况处理完毕,开始转换
+    while ((*str != '\0') && (*str >= '0') && (*str <= '9')) {
+        ret = (ret * 10 + *str - '0');
+        str++;
+    }
+    //带上符号位
+    ret *= symbol;
+    //检测溢出
+    //int 0111 1111 1111 1111 1111 1111 1111 1111 正溢出
+    //     7    f    f    f    f    f    f    f
+    //    1000 0000 0000 0000 0000 0000 0000 0000 负溢出
+    //      8     0   0   0     0    0    0    0
+    if (((ret > 0x7fffffff) && (1 == symbol)) ||
+        (ret < (signed int)0x80000000) && (-1 == symbol)) {
+        flag = invaild;
+        return 0;
+    }
+    //ret合法
+    flag = vaild;
+    return ret;
+}
+//打印atoi函数状态+\n
+void PrintState() {
+    if (flag) {
+        printf("异常\n");
+    }
+    else {
+        printf("正常\n");
+    }
+}
+//测试函数
+void FunTest() {
+    long long num = my_atoi("123456789");
+    printf("value=%lld,state=%d\n", num, flag);
+    PrintState();//正常
+    num = my_atoi("-123456789");
+    printf("value=%lld,state=%d\n", num, flag);
+    PrintState();//正常
+    num = my_atoi("-123456789sassa");
+    printf("value=%lld,state=%d\n", num, flag);
+    PrintState();//正常,遇到字母终止
+    num = my_atoi("    -123456789sassa");
+    printf("value=%lld,state=%d\n", num, flag);
+    PrintState();//正常,前面带空格
+    //////////////异常情况/////////
+    printf("\n\n");
+    num = my_atoi("");
+    printf("value=%lld,state=%d\n", my_atoi(""), flag); // printf函数的调用约定是_cdel
+    PrintState();//异常:空字符串
+    num = my_atoi("123456789123456789");
+    printf("value=%lld,state=%d\n", num, flag);
+    PrintState();//异常:正溢出
+    num = my_atoi("-123456789123456789");
+    printf("value=%lld,state=%d\n", num, flag);
+    PrintState();//异常:负溢出
+    num = my_atoi("dasdsa");
+    printf("value=%lld,state=%d\n", num, flag);
+    PrintState();//异常:无法转换
+}
+int main() {
+    FunTest();
+    return 0;
+}
