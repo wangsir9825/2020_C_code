@@ -1,0 +1,55 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+#include <stdio.h>
+#include <assert.h> //assert
+#include <ctype.h> //isspace
+
+int my_atoi(const char* str) {
+    int ret = 0;
+    int symbol = 1;
+    //断言str!=NULL
+    assert(str);
+    //判断空字符
+    if ('\0' == *str) {
+        return 0;
+    }
+    //去掉空格、制表符
+    while (isspace(*str)) {
+        str++;
+    }
+    //符号位判断
+    if ('-' == *str) {
+        symbol = -1;
+        str++;
+    }
+    else if ('+' == *str) {
+        str++;
+    }
+    else if (((*str <= '0') || (*str >= '9'))) { // 其他字符无法转换
+        return 0;
+    }
+    //其他异常情况处理完毕,开始转换
+    while ((*str != '\0') && (*str >= '0') && (*str <= '9')) {
+        ret = (ret * 10 + *str - '0');
+        str++;
+    }
+    //带上符号位
+    ret *= symbol;
+
+    //检测溢出
+    //int 0111 1111 1111 1111  正溢出
+    //     7    f    f    f   
+    //    1000 0000 0000 0000 负溢出
+    //      8     0   0   0   
+    if (((ret > 0x7fff) && (1 == symbol)) ||
+        (ret < (signed int)0x8000) && (-1 == symbol)) {
+        return 0;
+    }
+
+    return ret;
+}
+
+int main() {
+    int value = my_atoi("1234");
+    printf("转换后的value = %d\n", value);
+    return 0;
+}
