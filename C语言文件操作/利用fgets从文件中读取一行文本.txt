@@ -1,0 +1,19 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+#include stdio.h
+
+int main()
+{
+    FILE pFile;
+    pFile = fopen(myfile.txt, r); 以只读的方式打开文件，文件必须存在才能打开成功
+    if (pFile == NULL)如果打开失败
+    {
+        perror(fopen);
+        return 1;
+    }
+    char str[100] = { 0 };
+    fgets(str, 4, pFile);
+    printf(%s, str);将读入的字符串打印到屏幕
+    fclose(pFile);
+    pFile = NULL; 将指针置为空，防止产生野指针
+    return 0;
+}
