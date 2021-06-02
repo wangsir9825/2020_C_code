@@ -1,0 +1,24 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+#include stdio.h
+struct S
+{
+    char name[20];
+    int age;
+    double hight;
+};
+int main()
+{
+    FILE pFile = fopen(myfile.txt, rb); 以只读的方式打开文件，文件必须存在才能打开成功
+    if (pFile == NULL)如果打开失败
+    {
+        perror(fopen);
+        return 1;
+    }
+    struct S s = { 0 };
+    fread(&s, sizeof(s), 1, pFile); 以二进制形式从文件中读数据，把数据保存在s中，每次读一个数据，每个数据的大小为sizeof(s)
+
+    printf(%s %d %lfn, s.name, s.age, s.hight); 打印
+    fclose(pFile);
+    pFile = NULL; 将指针置为空，防止产生野指针
+    return 0;
+}
