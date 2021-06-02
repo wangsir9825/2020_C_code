@@ -1,0 +1,10 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+#include stdio.h
+
+int main()
+{
+    char str[100] = { 0 };
+    fgets(str, 2, stdin);
+    printf(%s, str);将读入的字符串打印到屏幕
+    return 0;
+}
