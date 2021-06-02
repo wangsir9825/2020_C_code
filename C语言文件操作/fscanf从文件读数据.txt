@@ -1,0 +1,24 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+#include stdio.h
+struct S
+{
+    char name[40];
+    int age;
+};
+int main()
+{
+    FILE pFile;
+    pFile = fopen(myfile.txt, r); 以只读的方式打开文件，文件必须存在才能打开成功
+    if (pFile == NULL)如果打开失败
+    {
+        perror(fopen);
+        return 1;
+    }
+    struct S s = { 0 };
+    fscanf(pFile, %s %d, s.name, &(s.age)); 读数据
+
+    printf(%s %d, s.name, s.age); 打印
+    fclose(pFile);
+    pFile = NULL; 将指针置为空，防止产生野指针
+    return 0;
+}
