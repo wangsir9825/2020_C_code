@@ -1,0 +1,22 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+#include stdio.h
+struct S
+{
+    char name[20];
+    int age;
+};
+int main()
+{
+    FILE pFile;
+    pFile = fopen(myfile.txt, w); 以只写的方式打开文件，若文件不存在，则新建一个文件
+    if (pFile == NULL)如果打开失败
+    {
+        perror(fopen);
+        return 1;
+    }
+    struct S s = { 张三,20 };
+    fprintf(pFile, %s %d, s.name, s.age);
+    fclose(pFile);
+    pFile = NULL; 将指针置为空，防止产生野指针
+    return 0;
+}
