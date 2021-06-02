@@ -1,0 +1,23 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+#include stdio.h
+struct S
+{
+    char name[20];
+    int age;
+    double hight;
+};
+int main()
+{
+    FILE pFile = fopen(myfile.txt, wb); 以只写的方式打开文件，若文件不存在，则新建一个文件(写入的数据为二进制)
+    if (pFile == NULL)如果打开失败
+    {
+        perror(fopen);
+        return 1;
+    }
+    struct S s = { 张三,20,1.75 };
+    二进制写入
+    fwrite( &s, sizeof(s), 1, pFile); 把s的数据写入到pFile，s的大小为sizeof(s)，总共写1个s
+    fclose(pFile);
+    pFile = NULL; 将指针置为空，防止产生野指针
+    return 0;
+}
