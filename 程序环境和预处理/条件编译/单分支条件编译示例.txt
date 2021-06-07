@@ -1,0 +1,17 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+#include stdio.h
+#define __DEBUG__ 1
+
+int main()
+{
+
+    #if __DEBUG__
+    printf(今天天气好晴朗n); 第1个printf函数
+    #endif  __DEBUG__
+
+    #if 0
+        printf(我不会被编译n); 第2个printf函数
+    #endif  0
+
+    return 0;
+}
