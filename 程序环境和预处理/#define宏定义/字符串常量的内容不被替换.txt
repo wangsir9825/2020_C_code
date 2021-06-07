@@ -1,0 +1,13 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+#include stdio.h
+
+#define ONE 1
+#define TWO 2
+#define THREE 3
+int main()
+{
+    const char str = ONE TWO THREE;
+    printf(%d %d %dn, ONE, TWO, THREE);
+    printf(%sn, str);
+    return 0;
+}
