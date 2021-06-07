@@ -1,0 +1,17 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+#include stdio.h
+#include stdlib.h
+#define SWAP_BIT(num)(((num&(0x55555555))1)  ((num&(0xAAAAAAAA))1))
+
+int main()
+{
+    int a = 0xd5;
+    char b[50];
+    _itoa(a, b, 2); 将转换成二进制字符串
+    printf(交换前：%sn, b);
+
+    a = SWAP_BIT(a); 奇偶交换
+    _itoa(a, b, 2); 将转换成二进制字符串
+    printf(交换后：%sn, b);
+    return 0;
+}
