@@ -1,0 +1,16 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+#include stdio.h
+
+int max(int a, int b)定义函数
+{
+    return a  b  a  b;
+}
+
+int main()
+{
+    int a = 10;
+    int b = 20;
+    int c = max(a++, b++);
+    printf(a = %d, b = %d, c = %dn, a, b, c);
+    return 0;
+}
