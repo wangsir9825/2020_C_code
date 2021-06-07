@@ -1,0 +1,22 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+#include stdio.h
+#include stdlib.h  malloc
+#include string.h
+#define MALLOC(n, type)
+    (type)malloc(nsizeof(type))
+
+int main()
+{
+
+    char pstr = MALLOC(15, char); pstr指向的空间可以存放15个char型数据
+    if (NULL == pstr)判断pstr指针是否为空
+    {
+        perror(malloc);
+        return 1;
+    }
+    strcpy(pstr, hello worldn);
+    printf(pstr);
+    free(pstr);释放pstr所指向的动态内存
+    pstr = NULL;防止野指针
+    return 0;
+}
