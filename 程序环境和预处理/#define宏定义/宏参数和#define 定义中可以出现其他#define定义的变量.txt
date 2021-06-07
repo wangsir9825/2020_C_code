@@ -1,0 +1,12 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+#include stdio.h
+#include math.h  sin
+
+#define PI 3.14
+#define THETA (PI2)
+#define COS(x) (sin((x + THETA)))
+int main()
+{
+    printf(cos(0) = %fn, COS(0));
+    return 0;
+}
