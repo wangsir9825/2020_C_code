@@ -1,0 +1,10 @@
+#include stdio.h
+#define INT_PTR int
+typedef int int_ptr;
+int main()
+{
+    INT_PTR a, b;
+    int_ptr c, d;
+
+    return 0;
+}
