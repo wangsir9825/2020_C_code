@@ -1,0 +1,12 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+#include stdio.h
+#define MAX(a, b) ((a)(b)(a)(b))
+
+int main()
+{
+    printf( %dn, MAX(2, 5));
+    printf( %fn, MAX(8.89, 5.46));
+    printf( %cn, MAX('c', 'd'));
+
+    return 0;
+}
