@@ -1,0 +1,19 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+#include stdio.h
+#define OFFSETOF(sname, mname) (int)&(((sname)0)-mname)
+
+struct S
+{
+    char c1;
+    int i;
+    char c2;
+};
+int main()
+{
+    struct S s = { 0 };
+    printf(%dn, OFFSETOF(struct S, c1));
+    printf(%dn, OFFSETOF(struct S, i));
+    printf(%dn, OFFSETOF(struct S, c2));
+
+    return 0;
+}
