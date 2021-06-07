@@ -1,0 +1,12 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+#include stdio.h
+
+int main()
+{
+    printf(file%sn, __FILE__);
+    printf(line%dn, __LINE__);
+    printf(date%sn, __DATE__);
+    printf(time%sn, __TIME__);
+    printf(stdc%dn, __STDC__);
+    return 0;
+}
