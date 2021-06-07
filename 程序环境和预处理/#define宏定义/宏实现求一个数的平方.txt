@@ -1,0 +1,10 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+#include stdio.h
+#define SQUARE( x ) x  x
+
+int main()
+{
+    printf(%d, SQUARE(5));
+
+    return 0;
+}
