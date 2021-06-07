@@ -1,0 +1,11 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+#include stdio.h
+#define PRINT(x) printf(The value of  #x  is %dn, x);
+int main()
+{
+    float pi = 3.14;
+    int a = 2;
+    PRINT(pi);
+    PRINT(a);
+    return 0;
+}
