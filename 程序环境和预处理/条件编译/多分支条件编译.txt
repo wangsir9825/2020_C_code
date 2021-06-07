@@ -1,0 +1,16 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+#include stdio.h
+#define __DEBUG__ 2
+int main()
+{
+    #if __DEBUG__ == 1
+    printf(第1个分支被编译n);
+    #elif __DEBUG__ == 2
+    printf(第2个分支被编译n);
+    #elif __DEBUG__ == 2
+    printf(第3个分支被编译n);
+    #else 
+    printf(第4个分支被编译n);
+    #endif __DEBUG__
+    return 0;
+}
