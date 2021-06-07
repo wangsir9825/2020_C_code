@@ -1,0 +1,25 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+#include stdio.h
+
+#define __DEBUG__
+
+int main()
+{
+#if defined(__DEBUG__)
+    printf(第1句被执行n);
+#endif __DEBUG__
+
+#ifdef __DEBUG__ 
+    printf(第2句被执行n);
+#endif __DEBUG__
+
+#if !defined(__DEBUG__) 
+    printf(第3句被执行n);
+#endif __DEBUG__
+
+#ifndef __DEBUG__ 
+    printf(第4句被执行n);
+#endif __DEBUG__
+
+    return 0;
+}
