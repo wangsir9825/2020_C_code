@@ -1,0 +1,41 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+#include <stdio.h>
+
+int main()
+{
+    int arr[5] = { 1,2,3,4,5 };
+    int(*parr)[5] = &arr;   // &arr是数组指针
+    int* pa1 = arr;         // arr是一级指针
+    int* pa2 = &arr[0];     // &arr[0]是一级指针
+    int num = *arr;         // *arr等价于arr[0]和*(arr+0)
+
+    int sz = sizeof(arr) / sizeof(arr[0]);
+
+    int i = 0;
+    printf("直接访问一维数组\n");
+    for (i = 0; i < sz; ++i) {
+        //printf("%d ", arr[i]);    // 第一种方式
+        printf("%d ", *(arr + i));  // 第二种方式
+}
+
+    printf("\n用一级指针访问一维数组\n");
+    for (i = 0; i < sz; ++i) {
+        //printf("%d ", pa1[i]);    // 第一种方式
+        printf("%d ", *(pa1 + i));  // 第二种方式
+}
+    for (i = 0; i < sz; ++i) {
+        //printf("%d ", pa2[i]);    // 第一种方式
+        printf("%d ", *(pa2 + i));  // 第二种方式
+}
+
+    printf("\n用数组指针访问一维数组\n");
+    int sz1 = (int*)(parr + 1) - (int*)parr; // 利用数组指针计算数组的大小
+    for (i = 0; i < sz1; ++i) {
+        //printf("%d ", parr[0][i]);        // 第一种方式
+        //printf("%d ", *(*parr + i));      // 第二种方式
+        //printf("%d ", *(parr[0] + i));    // 第三种方式
+        printf("%d ", (*parr)[i]);          // 第四种方式
+    }
+
+    return 0;
+}
